@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
-public class Application {
+public class PriceBasket {
 	
 	public static void main(String[] args) {
 		if(args.length == 0)

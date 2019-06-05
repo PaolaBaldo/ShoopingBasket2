@@ -13,6 +13,8 @@ import model.Offer;
 import model.ShoppingBasket;
 import util.Constants;
 
+import static org.junit.Assert.assertThat;
+
 public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 
 	private ArrayList<BasketItem> mockedBasketItemList;
@@ -26,14 +28,10 @@ public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 	
 	public ArrayList<Offer> getExpectedOfferList() {
 		ArrayList<Offer> offerList = new ArrayList<Offer>();
-		for(BasketItem item : this.mockedBasketItemList) {
-			if(item.getItemName().equals(Constants.APPLES)) {
-				offerList.add(new Offer(item, Constants.APPLES_PERCENTAGE_OFF, new BigDecimal(0.1).setScale(2, RoundingMode.HALF_EVEN)));
-			}
-			if(item.getItemName().equals(Constants.SOUP) && item.getQuantity() >=2) {
-				offerList.add(new Offer(item, Constants.BREAD_PERCENTAGE_OFF, new BigDecimal(0.4).setScale(2, RoundingMode.HALF_EVEN)));
-			}
-		}
+        BasketItem apple = new BasketItem(Constants.APPLES, Constants.APPLES_PRICE, 1 );
+        BasketItem bread = new BasketItem(Constants.BREAD, Constants.BREAD_PRICE, 1 );
+        offerList.add(new Offer(apple, Constants.APPLES_PERCENTAGE_OFF, new BigDecimal(0.1).setScale(2, RoundingMode.HALF_EVEN)));
+        offerList.add(new Offer(bread, Constants.BREAD_PERCENTAGE_OFF, new BigDecimal(0.4).setScale(2, RoundingMode.HALF_EVEN)));
 		return offerList;
 	}
 
@@ -72,9 +70,12 @@ public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 		ShoppingBasketService shoppingBasketService = new ShoppingBasketServiceImpl();
 		ArrayList<Offer> actualOffers = shoppingBasketService.applyOffers(this.mockedBasketItemList);
 		ArrayList<Offer> expectedOffers = this.expectedOfferList;
+
 		for(Offer mockerOffer: expectedOffers) {
 			for(Offer actualOffer: actualOffers ) {
-				Assert.assertEquals(mockerOffer.getDiscount(), actualOffer.getDiscount());
+                if(actualOffer.getAffectedItem().getItemName().equals(mockerOffer.getAffectedItem().getItemName())){
+                    Assert.assertEquals(mockerOffer.getDiscount(), actualOffer.getDiscount());
+                }
 			}
 		}
 	}

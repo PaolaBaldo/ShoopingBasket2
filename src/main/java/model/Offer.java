@@ -1,6 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 public class Offer{
@@ -42,5 +43,15 @@ public class Offer{
 		return "Offer [affectedItem=" + affectedItem + ", percentageOff=" + percentageOff + ", discount=" + discount
 				+ "]";
 	}
+
+    //Test equal, override equals() and hashCode()
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Offer offer = (Offer) o;
+        return discount == offer.discount &&
+                Objects.equals(affectedItem.getItemName(), offer.getAffectedItem().getItemName());
+    }
 
 }
