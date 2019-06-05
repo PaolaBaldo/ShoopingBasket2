@@ -14,7 +14,7 @@ import model.ShoppingBasket;
 import util.Constants;
 
 
-public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
+public class TestShoppingBasketServiceTest_ApplesAndBreadDiscount {
 
 	private ArrayList<BasketItem> mockedBasketItemList;
 	private ArrayList<Offer> expectedOfferList;

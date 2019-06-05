@@ -14,7 +14,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 
 
-public class ShoppingBasketServiceTest_ApplesDiscount {
+public class TestShoppingBasketServiceTest_ApplesDiscount {
 	
 
     private ArrayList<BasketItem> mockedBasketItemList;
