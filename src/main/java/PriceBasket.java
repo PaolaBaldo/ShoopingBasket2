@@ -14,14 +14,9 @@ public class PriceBasket {
 	public static void main(String[] args) {
 		if(args.length == 0)
 	    {
-	        //System.out.println("Correct usage example: PriceBasket Apples Milk Soup Soup");
-	        //System.exit(0);
-            args = new String[5];
-            args[0]= Constants.APPLES;
-            args[1]= Constants.MILK;
-            args[2]= Constants.BREAD;
-            args[3]= Constants.SOUP;
-            args[4]= Constants.SOUP;
+	        System.out.println("Correct usage example: PriceBasket Apples Milk Soup Soup");
+	        System.exit(0);
+         
 	    }
 		
 		ShoppingBasketService shoppingCartService = new ShoppingBasketServiceImpl();
