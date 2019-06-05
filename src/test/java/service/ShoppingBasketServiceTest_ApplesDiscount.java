@@ -1,10 +1,10 @@
 package service;
 
-import junit.framework.Assert;
+
 import model.BasketItem;
 import model.Offer;
 import model.ShoppingBasket;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import util.Constants;

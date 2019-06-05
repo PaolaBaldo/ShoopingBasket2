@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 import model.BasketItem;
 import model.Offer;
 import model.ShoppingBasket;
@@ -59,9 +59,9 @@ public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 		shoppingBasket.getItems().add(bread_);
 		
 		BasketItem soup = new BasketItem();
-		bread_.setQuantity(2);
-		bread_.setItemCost(Constants.SOUP_PRICE);
-		bread_.setItemName(Constants.SOUP);
+        soup.setQuantity(2);
+        soup.setItemCost(Constants.SOUP_PRICE);
+        soup.setItemName(Constants.SOUP);
 		shoppingBasket.getItems().add(soup);
 
 		return shoppingBasket.getItems();
@@ -74,7 +74,7 @@ public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 		ArrayList<Offer> expectedOffers = this.expectedOfferList;
 		for(Offer mockerOffer: expectedOffers) {
 			for(Offer actualOffer: actualOffers ) {
-				Assert.assertEquals(mockerOffer.getDiscount(), actualOffer.getDiscount());	
+				Assert.assertEquals(mockerOffer.getDiscount(), actualOffer.getDiscount());
 			}
 		}
 	}
