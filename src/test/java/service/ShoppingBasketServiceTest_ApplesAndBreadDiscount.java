@@ -13,7 +13,6 @@ import model.Offer;
 import model.ShoppingBasket;
 import util.Constants;
 
-import static org.junit.Assert.assertThat;
 
 public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 
@@ -79,6 +78,24 @@ public class ShoppingBasketServiceTest_ApplesAndBreadDiscount {
 			}
 		}
 	}
+
+    @Test
+    public void calculateSubTotal() {
+        ShoppingBasketService shoppingBasketService = new ShoppingBasketServiceImpl();
+        ArrayList<BasketItem> items = this.mockedBasketItemList;
+        BigDecimal subTotal = shoppingBasketService.calculateSubTotal(items);
+
+        Assert.assertEquals(new BigDecimal(4.40).setScale(2, RoundingMode.HALF_EVEN), subTotal);
+    }
+
+    @Test
+    public void calculateTotal() {
+        ShoppingBasketService shoppingBasketService = new ShoppingBasketServiceImpl();
+        BigDecimal totalDiscount = new BigDecimal(0.50).setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal subTotal = new BigDecimal(4.40).setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal total = shoppingBasketService.calculateTotal(subTotal, totalDiscount);
+        Assert.assertEquals(new BigDecimal(3.90).setScale(2, RoundingMode.HALF_EVEN), total);
+    }
 	
 	
 
