@@ -1,4 +1,4 @@
-# ShoopingBasket
+# ShoppingBasket
 
 Steps to build and run application: <br />
 <br />
