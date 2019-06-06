@@ -8,6 +8,8 @@ import util.Constants;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 
@@ -76,26 +78,27 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
 	@Override
 	public ShoppingBasket generateBasketItems(String[] args, ShoppingBasket shoppingBasket) {
+		List<String> priceBasket = Arrays.asList(args); 
 		int soupQuantity = 0;
 		int applesQuantity = 0;
 		int milkQuantity = 0;
 		int breadQuantity = 0;
 		
-		for( int i = 0; i < args.length; i++){
-
-			if(args[i]==Constants.APPLES) {
+		for(String item : priceBasket) {
+			if(item.equals(Constants.APPLES)) {
 				applesQuantity++;
 			}
-			if(args[i]==Constants.BREAD) {
+			if(item.equals(Constants.MILK)) {
 				milkQuantity++;
             }
-			if(args[i]==Constants.MILK) {
+			if(item.equals(Constants.BREAD)) {
 				breadQuantity++;
 			}
-			if(args[i]==Constants.SOUP) {
+			if(item.equals(Constants.SOUP)) {
 				soupQuantity++;
 			}
 		}
+		
 		
 		if(applesQuantity>0) {
 			BasketItem apples_ = new BasketItem();
@@ -127,6 +130,7 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 			shoppingBasket.getItems().add(soup_);
 		}
 		return shoppingBasket;
+
 	}
 
 
